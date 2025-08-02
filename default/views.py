@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.list import ListView
+from .models import Tarefa
 
-def listaDeTarefas(request):
-  return HttpResponse("Lista de Tarefas")
+class ListaDeTarefas(ListView):
+    model = Tarefa
+    context_object_name = 'tarefas'
 
