@@ -3,10 +3,12 @@
 <table>
     <tr>
         <th>Item</th>
+        <th></th>
     </tr>
     {% for tarefa in tarefas %}
     <tr>
         <td>{{tarefa.title}}</td>
+        <td><a href="{% url 'tarefas' tarefa.id %}">Detalhes</a></td>
     </tr>
     {% empty %}
     <h3>No items in list</h3>
