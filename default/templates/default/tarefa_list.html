@@ -11,6 +11,7 @@
         <td>{{tarefa.title}}</td>
         <td><a href="{% url 'tarefa' tarefa.id %}">Detalhes</a></td>
         <td><a href="{% url 'editar-tarefa' tarefa.id %}">Editar</a></td>
+        <td><a href="{% url 'deletar-tarefa' tarefa.id %}">Excluir</a></td>
     </tr>
     {% empty %}
     <h3>No items in list</h3>
