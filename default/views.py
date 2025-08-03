@@ -29,7 +29,7 @@ class UserCreate(generics.CreateAPIView):
 
 class TarefaListCreate(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['complete']
+    filterset_fields = ['complete', 'create']
 
     serializer_class = TarefaSerializer
     permission_classes = [permissions.IsAuthenticated]

@@ -3,9 +3,18 @@ from .models import Tarefa
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)  # Isso é essencial
+    
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['username', 'password']
+    
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password']  # Aqui deve usar create_user, não create
+        )
+        return user
 
 class TarefaSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
