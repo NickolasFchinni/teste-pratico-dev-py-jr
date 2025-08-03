@@ -15,7 +15,6 @@ def test_user_serializer_create():
     user = serializer.save()
     assert user.pk is not None
     assert user.username == data["username"]
-    # A senha não fica exposta no serializer
     assert "password" not in serializer.data
 
 @pytest.mark.django_db
@@ -36,5 +35,4 @@ def test_tarefa_serializer():
     assert data["title"] == tarefa.title
     assert data["description"] == tarefa.description
     assert data["complete"] == tarefa.complete
-    # 'create' deve estar presente e ser uma string (isoformat)
     assert isinstance(data["create"], str)
